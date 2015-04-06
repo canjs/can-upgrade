@@ -11,15 +11,14 @@ Object.defineProperty(String.prototype, "lightred", {
     get: function() { return "\x1B[91m" + this + "\x1B[39m"; }
 });
 
-
 if(!( process && process.argv && process.argv.length > 2 )) {
 	console.log( process.argv.join(" ") + " [root directory]" );
 	process.exit(1);
 }
 
-
 var fs = require('fs');
-var dir = process.argv[2];
+var path = require('path');
+var dir = path.join(process.cwd(), process.argv[2]);
 var jsFileHasTemplateProp = [];
 
 function readFile(fullpath) {
@@ -74,8 +73,10 @@ function readDir(dir) {
 	var stats = null;
 
 	files.forEach(function(file) {
-		stats = fs.statSync(dir+file);
-		if(stats.isDirectory()) {
+		stats = fs.lstatSync(dir+file);
+		if(stats.isSymbolicLink()) {
+			return;
+		} else if(stats.isDirectory()) {
 			if(file !== "canjs" && file !== "can") {
 				readDir(dir+file);
 			}
