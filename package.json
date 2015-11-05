@@ -1,17 +1,26 @@
 {
   "name": "can-upgrade",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Upgrade CanJS Projects",
-  "main": "mustache_to_stache.js",
+  "main": "can-upgrade.js",
+  "bin": {
+    "can-upgrade": "./bin/can-upgrade.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run jshint",
+    "jshint": "jshint lib/. bin/. --config",
+    "release:prerelease": "npm version prerelease && npm publish",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/canjs/can-upgrade.git"
   },
   "keywords": [
-    "CanJS"
+    "CanJS",
+    "mustache"
   ],
   "author": "Bitovi, James0x57",
   "license": "MIT",
@@ -19,7 +28,7 @@
     "url": "https://github.com/canjs/can-upgrade/issues"
   },
   "homepage": "https://github.com/canjs/can-upgrade",
-  "bin": {
-    "mustache_to_stache": "./bin/mustache_to_stache.js"
+  "devDependencies": {
+    "jshint": "^2.8.0"
   }
 }
