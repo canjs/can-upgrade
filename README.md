@@ -1,11 +1,12 @@
 # can-upgrade
 
-To convert your mustache files to stache for the whole project, just run this in the terminal:
+To convert your project template files from mustache to stache, just run this in the terminal:
 
-```
+```shell
+npm install can-upgrade
 ./node_modules/.bin/can-upgrade ./
 ```
 
-It will do all the tedious parts for you and minimize the effort of your upgrade!
+It does all the tedious parts for you and minimizes the upgrade effort!
 
-It does not make the changes for templates written inline in your JavaScript so once it finishes, it will tell you what files to check manually if there are any.
+However, it does not make changes to templates written inline in your JavaScript. A list of files that should be checked manually is provided at the end.
