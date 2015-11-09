@@ -30,5 +30,8 @@
   "homepage": "https://github.com/canjs/can-upgrade",
   "devDependencies": {
     "jshint": "^2.8.0"
+  },
+  "dependencies": {
+    "yargs": "^3.29.0"
   }
 }

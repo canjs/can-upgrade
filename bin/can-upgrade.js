@@ -10,15 +10,14 @@ Object.defineProperty(String.prototype, "lightred", {
   get: function() { return "\x1B[91m" + this + "\x1B[39m"; }
 });
 
-if(!( process && process.argv && process.argv.length > 2 )) {
-  console.log( process.argv.join(" ") + " [root directory]" );
-  process.exit(1);
-}
-
+var argv = require('yargs')
+  .usage('Usage: $0 [path] --new-binding-syntax')
+  .demand(1)
+  .argv;
 var path = require('path');
 var dir = path.join(process.cwd(), process.argv[2]);
 var readDir = require('../lib/read-dir');
-var jsFileHasTemplateProp = readDir( dir );
+var jsFileHasTemplateProp = readDir( dir, argv );
 
 if(jsFileHasTemplateProp.length) {
   console.log("These files potentially have an inline template that must be converted manually:".lightred);
