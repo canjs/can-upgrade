@@ -1,5 +1,7 @@
 # can-upgrade
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/canjs/can-upgrade.svg)](https://greenkeeper.io/)
+
 To convert your project template files from mustache to stache, just run this in the terminal:
 
 ```shell
