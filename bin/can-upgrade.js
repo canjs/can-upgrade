@@ -9,4 +9,4 @@ upgrade(version).catch(function(err) {
     return;
   }
   console.error(err);
-})
+});
