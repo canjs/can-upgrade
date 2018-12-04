@@ -7,8 +7,9 @@
     "can-upgrade": "./bin/can-upgrade.js"
   },
   "scripts": {
-    "test": "npm run jshint",
+    "test": "npm run jshint && npm run mocha",
     "jshint": "jshint lib/. bin/. --config",
+    "mocha": "mocha test/test.js",
     "release:prerelease": "npm version prerelease && npm publish",
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
@@ -29,6 +30,12 @@
   },
   "homepage": "https://github.com/canjs/can-upgrade",
   "devDependencies": {
-    "jshint": "^2.8.0"
+    "jshint": "^2.8.0",
+    "mocha": "^5.2.0",
+    "mockery": "^2.0.0"
+  },
+  "dependencies": {
+    "cross-spawn-async": "^2.2.5",
+    "rimraf": "^2.6.2"
   }
 }

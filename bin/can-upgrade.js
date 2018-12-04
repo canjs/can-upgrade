@@ -1,26 +1,12 @@
 #!/usr/bin/env node
+var upgrade = require("../lib/upgrade");
+var version = process.argv[2] || "latest";
 
-Object.defineProperty(String.prototype, "bold", {
-  get: function() { return "\x1B[1m" + this + "\x1B[22m"; }
+upgrade(version).catch(function(err) {
+  var noVersion = err.message === "No version found";
+  if(noVersion) {
+    console.error("No version found for", version);
+    return;
+  }
+  console.error(err);
 });
-Object.defineProperty(String.prototype, "red", {
-  get: function() { return "\x1B[31m" + this + "\x1B[39m"; }
-});
-Object.defineProperty(String.prototype, "lightred", {
-  get: function() { return "\x1B[91m" + this + "\x1B[39m"; }
-});
-
-if(!( process && process.argv && process.argv.length > 2 )) {
-  console.log( process.argv.join(" ") + " [root directory]" );
-  process.exit(1);
-}
-
-var path = require('path');
-var dir = path.join(process.cwd(), process.argv[2]);
-var readDir = require('../lib/read-dir');
-var jsFileHasTemplateProp = readDir( dir );
-
-if(jsFileHasTemplateProp.length) {
-  console.log("These files potentially have an inline template that must be converted manually:".lightred);
-  console.log(jsFileHasTemplateProp.join("\n"));
-}
