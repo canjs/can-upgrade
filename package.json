@@ -31,7 +31,7 @@
   "homepage": "https://github.com/canjs/can-upgrade",
   "devDependencies": {
     "jshint": "^2.8.0",
-    "mocha": "^5.2.0",
+    "mocha": "^6.1.2",
     "mockery": "^2.0.0"
   },
   "dependencies": {
