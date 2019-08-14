@@ -36,6 +36,6 @@
   },
   "dependencies": {
     "cross-spawn-async": "^2.2.5",
-    "rimraf": "^2.6.2"
+    "rimraf": "^3.0.0"
   }
 }
